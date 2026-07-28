@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logoAsset from "@/assets/arkano-logo.jpg.asset.json";
 
 const WHATSAPP_URL =
   "https://chat.whatsapp.com/DmLHmZhtgpjL13audR5cuo?s=cl&p=i&mlu=0&amv=0";
@@ -58,7 +57,7 @@ function LandingPage() {
     <main className="flex h-dvh w-full flex-col items-center justify-center overflow-hidden bg-black px-6 text-center">
       <div className="flex w-full max-w-[420px] flex-col items-center">
         <img
-          src={logoAsset.url}
+          src="/arkano-logo.jpg"
           alt="Arkano"
           className="mb-8 h-16 w-auto sm:h-20"
         />
