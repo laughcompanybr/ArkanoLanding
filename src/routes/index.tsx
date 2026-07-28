@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "motion/react";
+import logoAsset from "@/assets/arkano-logo.jpg.asset.json";
 
 const WHATSAPP_URL =
   "https://chat.whatsapp.com/DmLHmZhtgpjL13audR5cuo?s=cl&p=i&mlu=0&amv=0";
@@ -7,26 +7,32 @@ const WHATSAPP_URL =
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Arkano Club — Exclusividade começa com um convite" },
+      { title: "Arkano — Comunidade Exclusiva" },
       {
         name: "description",
         content:
-          "Entre para a comunidade oficial da Arkano Club e tenha acesso a lançamentos, novidades e atendimento personalizado diretamente pelo WhatsApp.",
+          "Entre para a comunidade exclusiva da Arkano no WhatsApp. Acesso direto, rápido e VIP.",
       },
-      { property: "og:title", content: "Arkano Club — Exclusividade começa com um convite" },
+      {
+        property: "og:title",
+        content: "Arkano — Comunidade Exclusiva",
+      },
       {
         property: "og:description",
         content:
-          "Comunidade oficial da Arkano Club. Lançamentos, novidades e atendimento personalizado pelo WhatsApp.",
+          "Entre para a comunidade exclusiva da Arkano no WhatsApp. Acesso direto, rápido e VIP.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Arkano Club — Exclusividade começa com um convite" },
+      {
+        name: "twitter:title",
+        content: "Arkano — Comunidade Exclusiva",
+      },
       {
         name: "twitter:description",
         content:
-          "Comunidade oficial da Arkano Club. Lançamentos, novidades e atendimento personalizado pelo WhatsApp.",
+          "Entre para a comunidade exclusiva da Arkano no WhatsApp. Acesso direto, rápido e VIP.",
       },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -34,212 +40,72 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
 });
 
-const easeOut = [0.22, 1, 0.36, 1] as [number, number, number, number];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } },
-};
-
-function CTAButton({ children }: { children: React.ReactNode }) {
+function WhatsAppIcon({ className }: { className?: string }) {
   return (
-    <a
-      href={WHATSAPP_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-block border border-gold px-10 py-[18px] text-[13px] uppercase tracking-[0.22em] text-[#111111] transition-colors duration-300 hover:bg-gold hover:text-white"
-      style={{ borderRadius: 2 }}
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
     >
-      {children}
-    </a>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
   );
 }
-
 
 function LandingPage() {
   return (
-    <div className="min-h-screen bg-white text-[#111111] antialiased">
-      <Header />
-      <Hero />
-      <Divider />
-      <Benefits />
-      <Statement />
-      <FinalCta />
-      <Footer />
-    </div>
-  );
-}
+    <main className="flex h-dvh w-full flex-col items-center justify-center overflow-hidden bg-black px-6 text-center">
+      <div className="flex w-full max-w-[420px] flex-col items-center">
+        <img
+          src={logoAsset.url}
+          alt="Arkano"
+          className="mb-8 h-16 w-auto sm:h-20"
+        />
 
-function Header() {
-  return (
-    <header className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-8 md:px-10">
-      <span className="text-[13px] uppercase tracking-[0.4em] text-[#111111]">
-        Arkano <span className="text-gold">Club</span>
-      </span>
-      <a
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hidden text-[11px] uppercase tracking-[0.28em] text-gray-mid transition-colors duration-300 hover:text-gold md:inline-block"
-      >
-        Entrar
-      </a>
-    </header>
-  );
-}
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-white/90 sm:text-xs">
+          <span aria-hidden="true">🔒</span>
+          Comunidade Oficial Arkano
+        </div>
 
-function Hero() {
-  return (
-    <section className="mx-auto flex min-h-[85vh] max-w-[1200px] flex-col items-center justify-center px-6 py-24 text-center md:px-10">
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={{ show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } } }}
-        className="flex flex-col items-center"
-      >
-        <motion.p
-          variants={fadeUp}
-          className="mb-10 text-[11px] uppercase tracking-[0.42em] text-gold"
-        >
-          Comunidade Oficial
-        </motion.p>
+        <h1 className="max-w-[16ch] text-[32px] font-semibold leading-[1.1] tracking-[-0.02em] text-white sm:text-[40px]">
+          Entre agora para a Comunidade Exclusiva Arkano.
+        </h1>
 
-        <motion.h1
-          variants={fadeUp}
-          className="max-w-[16ch] text-[44px] font-light leading-[1.05] tracking-[-0.02em] text-[#111111] md:text-[64px] lg:text-[76px]"
-          style={{ textWrap: "balance" } as React.CSSProperties}
-        >
-          Exclusividade começa com um <span className="italic text-gold">convite</span>.
-        </motion.h1>
+        <p className="mt-5 max-w-[30ch] text-base leading-relaxed text-white/70 sm:text-lg">
+          Receba oportunidades, novidades e conteúdos exclusivos diretamente
+          pelo WhatsApp.
+        </p>
 
-        <motion.p
-          variants={fadeUp}
-          className="mt-8 max-w-[52ch] text-[17px] leading-[1.6] text-gray-mid md:text-[19px]"
-          style={{ textWrap: "balance" } as React.CSSProperties}
-        >
-          Entre para a comunidade oficial da Arkano Club e tenha acesso a lançamentos,
-          novidades e atendimento personalizado diretamente pelo WhatsApp.
-        </motion.p>
+        <p className="mt-4 max-w-[32ch] text-sm leading-relaxed text-white/50 sm:text-base">
+          O acesso leva apenas alguns segundos. Clique no botão verde abaixo
+          para entrar na comunidade oficial.
+        </p>
 
-        <motion.div variants={fadeUp} className="mt-12">
-          <CTAButton>Entrar na Comunidade VIP</CTAButton>
-        </motion.div>
+        <div className="mt-10 w-full">
+          <div className="mb-4 flex items-center justify-center gap-2 text-sm font-semibold text-white sm:text-base">
+            <span aria-hidden="true" className="text-lg">
+              👇
+            </span>
+            <span className="uppercase tracking-[0.04em]">
+              É este botão abaixo
+            </span>
+            <span aria-hidden="true" className="text-lg">
+              👇
+            </span>
+          </div>
 
-        <motion.p
-          variants={fadeUp}
-          className="mt-8 text-[12px] tracking-[0.08em] text-gray-mid"
-        >
-          Entrada gratuita — Sem spam — Saída quando desejar
-        </motion.p>
-      </motion.div>
-    </section>
-  );
-}
-
-function Divider() {
-  return (
-    <div className="mx-auto max-w-[1200px] px-6 md:px-10">
-      <div className="mx-auto h-px w-full bg-[#EAEAEA]" />
-    </div>
-  );
-}
-
-function Benefits() {
-  const items = [
-    { n: "I", title: "Antecipação", text: "Receba novidades antes de todos." },
-    { n: "II", title: "Exclusividade", text: "Ofertas exclusivas para membros." },
-    { n: "III", title: "Proximidade", text: "Atendimento direto pelo WhatsApp." },
-  ];
-
-  return (
-    <section className="mx-auto max-w-[1200px] px-6 py-32 md:px-10 md:py-40">
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={{ show: { transition: { staggerChildren: 0.12 } } }}
-        className="grid grid-cols-1 md:grid-cols-3"
-      >
-        {items.map((item, i) => (
-          <motion.div
-            key={item.n}
-            variants={fadeUp}
-            className={`px-2 py-10 md:px-10 md:py-4 ${
-              i !== 0 ? "border-t border-[#EAEAEA] md:border-t-0 md:border-l" : ""
-            }`}
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="animate-pulse-soft flex h-[72px] w-full items-center justify-center gap-3 rounded-2xl bg-[#25D366] px-5 text-lg font-semibold uppercase tracking-[0.02em] text-white shadow-whatsapp transition-transform duration-200 active:scale-[0.98] sm:text-xl"
           >
-            <p className="mb-6 font-serif text-[15px] italic text-gold">{item.n}</p>
-            <h3 className="mb-3 font-serif text-[24px] font-light tracking-[-0.01em] text-[#111111]">
-              {item.title}
-            </h3>
-            <p className="text-[15px] leading-[1.6] text-gray-mid">{item.text}</p>
-          </motion.div>
-        ))}
-      </motion.div>
-    </section>
-  );
-}
-
-function Statement() {
-  return (
-    <section className="bg-arkano-black py-32 md:py-48">
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={{ show: { transition: { staggerChildren: 0.15 } } }}
-        className="mx-auto flex max-w-[900px] flex-col items-center px-6 text-center md:px-10"
-      >
-        <motion.div variants={fadeUp} className="mb-10 h-px w-10 bg-gold" />
-        <motion.p
-          variants={fadeUp}
-          className="font-serif text-[28px] font-light italic leading-[1.25] text-white md:text-[42px]"
-          style={{ textWrap: "balance" } as React.CSSProperties}
-        >
-          Elegância não está apenas no que você usa. Está também nas escolhas que faz.
-        </motion.p>
-      </motion.div>
-    </section>
-  );
-}
-
-function FinalCta() {
-  return (
-    <section className="mx-auto max-w-[1200px] px-6 py-32 text-center md:px-10 md:py-48">
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-        variants={{ show: { transition: { staggerChildren: 0.12 } } }}
-        className="flex flex-col items-center"
-      >
-        <motion.h2
-          variants={fadeUp}
-          className="max-w-[18ch] text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-[#111111] md:text-[56px]"
-          style={{ textWrap: "balance" } as React.CSSProperties}
-        >
-          Faça parte da <span className="italic text-gold">Arkano Club</span>.
-        </motion.h2>
-        <motion.p
-          variants={fadeUp}
-          className="mt-6 max-w-[42ch] text-[17px] leading-[1.6] text-gray-mid md:text-[18px]"
-        >
-          Um convite não se repete duas vezes.
-        </motion.p>
-        <motion.div variants={fadeUp} className="mt-12">
-          <CTAButton>Entrar na Comunidade VIP</CTAButton>
-        </motion.div>
-      </motion.div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="py-10">
-      <p className="text-center text-[11px] uppercase tracking-[0.3em] text-gray-mid">
-        Arkano Club © 2026
-      </p>
-    </footer>
+            <WhatsAppIcon className="h-7 w-7 shrink-0" />
+            <span className="text-balance">Entrar na Comunidade Arkano</span>
+          </a>
+        </div>
+      </div>
+    </main>
   );
 }
