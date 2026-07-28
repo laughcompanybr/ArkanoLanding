@@ -87,7 +87,7 @@ function LandingPage() {
               👇
             </span>
             <span className="uppercase tracking-[0.04em]">
-              É este botão abaixo
+              Clique no botão abaixo
             </span>
             <span aria-hidden="true" className="text-lg">
               👇
